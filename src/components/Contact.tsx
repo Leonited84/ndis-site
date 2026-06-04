@@ -37,102 +37,66 @@ export default function Contact() {
   }
 
   const inputClass =
-    "w-full border border-border rounded-xl px-4 py-3 text-sm bg-white focus:ring-2 focus:ring-green-dark/20 focus:border-green-dark/30 outline-none transition-all placeholder:text-text-faint/60";
+    "w-full border border-border/60 rounded-xl px-5 py-3.5 text-sm bg-white focus:ring-2 focus:ring-green-dark/15 focus:border-green-dark/30 outline-none transition-all placeholder:text-text-faint/50";
 
   return (
-    <section className="bg-cream px-6 md:px-12 lg:px-16 py-16 md:py-24">
-      <div className="max-w-lg mx-auto">
-        <div className="text-center mb-10">
-          <div className="text-[10px] tracking-[2.5px] uppercase text-amber font-medium mb-3">
+    <section className="bg-cream px-6 md:px-12 lg:px-16 py-20 md:py-28">
+      <div className="max-w-xl mx-auto">
+        <div className="text-center mb-12">
+          <div className="inline-block text-[10px] tracking-[2.5px] uppercase text-amber font-semibold mb-3 bg-amber/8 rounded-full px-4 py-1.5">
             {t.contact.label}
           </div>
-          <h2 className="font-serif text-2xl md:text-[34px] font-medium text-green-dark leading-[1.2]">
+          <h2 className="font-serif text-2xl md:text-[36px] font-medium text-green-dark leading-[1.2]">
             {t.contact.title}
           </h2>
         </div>
 
         {status === "success" ? (
-          <div className="bg-green-pale border border-green-light rounded-2xl p-8 text-center">
-            <div className="w-12 h-12 rounded-full bg-green-dark text-white flex items-center justify-center mx-auto mb-4">
-              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <div className="bg-green-pale border border-green-light/50 rounded-2xl p-10 text-center animate-fade-in">
+            <div className="w-14 h-14 rounded-full bg-green-dark text-white flex items-center justify-center mx-auto mb-5">
+              <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
               </svg>
             </div>
-            <p className="text-sm text-green-dark font-medium">{t.contact.success}</p>
+            <p className="text-[15px] text-green-dark font-medium mb-2">{t.contact.success}</p>
+            <p className="text-[13px] text-text-muted">I'll respond within 24 hours.</p>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="space-y-5">
             <div>
-              <label className="block text-sm font-medium text-text-dark mb-1.5">
-                {t.contact.nameLabel}
-              </label>
-              <input
-                type="text"
-                name="name"
-                required
-                placeholder={t.contact.namePlaceholder}
-                className={inputClass}
-              />
+              <label className="block text-sm font-medium text-text-dark mb-2">{t.contact.nameLabel}</label>
+              <input type="text" name="name" required placeholder={t.contact.namePlaceholder} className={inputClass} />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               <div>
-                <label className="block text-sm font-medium text-text-dark mb-1.5">
-                  {t.contact.phoneLabel}
-                </label>
-                <input
-                  type="tel"
-                  name="phone"
-                  placeholder={t.contact.phonePlaceholder}
-                  className={inputClass}
-                />
+                <label className="block text-sm font-medium text-text-dark mb-2">{t.contact.phoneLabel}</label>
+                <input type="tel" name="phone" placeholder={t.contact.phonePlaceholder} className={inputClass} />
               </div>
               <div>
-                <label className="block text-sm font-medium text-text-dark mb-1.5">
-                  {t.contact.emailLabel}
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  required
-                  placeholder={t.contact.emailPlaceholder}
-                  className={inputClass}
-                />
+                <label className="block text-sm font-medium text-text-dark mb-2">{t.contact.emailLabel}</label>
+                <input type="email" name="email" required placeholder={t.contact.emailPlaceholder} className={inputClass} />
               </div>
             </div>
             <div>
-              <label className="block text-sm font-medium text-text-dark mb-1.5">
-                {t.contact.messageLabel}
-              </label>
-              <textarea
-                name="message"
-                required
-                rows={4}
-                placeholder={t.contact.messagePlaceholder}
-                className={`${inputClass} resize-none`}
-              />
+              <label className="block text-sm font-medium text-text-dark mb-2">{t.contact.messageLabel}</label>
+              <textarea name="message" required rows={4} placeholder={t.contact.messagePlaceholder} className={`${inputClass} resize-none`} />
             </div>
             <div>
-              <label className="block text-sm font-medium text-text-dark mb-1.5">
-                {t.contact.langLabel}
-              </label>
-              <select
-                name="language"
-                defaultValue="en"
-                className={inputClass}
-              >
+              <label className="block text-sm font-medium text-text-dark mb-2">{t.contact.langLabel}</label>
+              <select name="language" defaultValue="en" className={inputClass}>
                 <option value="en">{t.contact.langEn}</option>
                 <option value="ar">{t.contact.langAr}</option>
               </select>
             </div>
             {status === "error" && (
-              <p className="text-sm text-red-600 bg-red-50 rounded-lg px-4 py-2">
+              <div className="bg-red-50 border border-red-200 rounded-xl px-5 py-3 text-sm text-red-700">
                 {t.contact.error}
-              </p>
+              </div>
             )}
             <button
               type="submit"
               disabled={status === "sending"}
-              className="btn-press w-full bg-green-dark text-white px-8 py-3.5 rounded-xl text-sm font-medium hover:bg-green-mid transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
+              className="btn-press w-full bg-green-dark text-white px-8 py-4 rounded-xl text-sm font-medium hover:bg-green-mid transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
             >
               {status === "sending" ? (
                 <>
