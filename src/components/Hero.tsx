@@ -7,51 +7,104 @@ export default function Hero() {
   const { t } = useLang();
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-[56%_44%] min-h-[480px] md:min-h-[560px]">
-      {/* Left panel */}
-      <div className="bg-green-dark px-6 md:px-14 py-12 md:py-16 flex flex-col justify-center">
-        <div className="text-[10px] tracking-[2.5px] uppercase text-[#7dbfa0] font-medium mb-4">
-          {t.hero.tag}
-        </div>
-        <h1 className="font-serif text-3xl md:text-[42px] font-medium text-white leading-[1.15] mb-3">
-          {t.hero.title}<br />
-          <em className="text-amber-light not-italic">{t.hero.titleEm}</em>
-        </h1>
-        <p className="text-sm md:text-[15px] text-white/68 leading-[1.8] mb-3 max-w-[400px]">
-          {t.hero.sub}
-        </p>
-        <div className="flex items-center gap-2 mb-8">
-          <div className="w-2 h-2 rounded-full bg-[#7dbfa0] flex-shrink-0" />
-          <span className="text-[11px] md:text-[13px] text-white/82">
-            {t.hero.indicator}
-          </span>
-        </div>
-        <div className="flex flex-wrap gap-4 items-center">
-          <a
-            href="tel:0466202000"
-            className="inline-block bg-amber text-white px-6 py-3 rounded-md text-sm font-medium hover:bg-[#a3672c] transition-colors"
-          >
-            {t.hero.cta}
-          </a>
-          <a
-            href="#how"
-            className="text-sm text-white/65 hover:text-white/90 transition-colors flex items-center gap-1"
-          >
-            {t.hero.howItWorks}
-          </a>
-        </div>
-      </div>
+    <div className="relative">
+      {/* Background decorative element */}
+      <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-green-mist/20 to-transparent pointer-events-none hidden md:block" />
 
-      {/* Right panel — photo */}
-      <div className="bg-green-deep overflow-hidden relative min-h-[300px] md:min-h-0">
-        <Image
-          src="/leo-photo.jpg"
-          alt="Leo Houssami"
-          fill
-          style={{ objectFit: "cover", objectPosition: "center top" }}
-          priority
-          sizes="(max-width: 768px) 100vw, 44vw"
-        />
+      <div className="grid grid-cols-1 md:grid-cols-[55%_45%] min-h-[520px] md:min-h-[600px]">
+        {/* Left panel */}
+        <div className="bg-green-dark px-6 md:px-14 lg:px-16 py-14 md:py-20 flex flex-col justify-center relative overflow-hidden">
+          {/* Subtle Arabic watermark */}
+          <div className="absolute top-6 right-6 text-[80px] md:text-[120px] text-white/[0.03] font-serif leading-none pointer-events-none select-none" dir="rtl">
+            مساعدتك
+          </div>
+
+          <div className="relative z-10">
+            <div className="inline-flex items-center gap-2 bg-white/10 rounded-full px-4 py-1.5 mb-6">
+              <div className="w-1.5 h-1.5 rounded-full bg-amber-light animate-pulse" />
+              <span className="text-[11px] tracking-[1.5px] uppercase text-white/70 font-medium">
+                {t.hero.tag}
+              </span>
+            </div>
+
+            <h1 className="font-serif text-3xl md:text-[44px] lg:text-[48px] font-medium text-white leading-[1.1] mb-4">
+              {t.hero.title}{" "}
+              <em className="text-amber-light not-italic block mt-1">
+                {t.hero.titleEm}
+              </em>
+            </h1>
+
+            <p className="text-sm md:text-[15px] text-white/60 leading-[1.85] mb-6 max-w-[420px]">
+              {t.hero.sub}
+            </p>
+
+            {/* CTA buttons */}
+            <div className="flex flex-wrap gap-3 mb-8">
+              <a
+                href="tel:0466202000"
+                className="btn-press inline-flex items-center gap-2 bg-amber text-white px-7 py-3.5 rounded-lg text-sm font-medium hover:bg-amber-warm transition-colors shadow-lg shadow-amber/20"
+              >
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+                {t.hero.cta}
+              </a>
+              <a
+                href="#how"
+                className="inline-flex items-center gap-2 text-white/60 hover:text-white/90 transition-colors text-sm py-3.5 px-4"
+              >
+                {t.hero.howItWorks}
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
+              </a>
+            </div>
+
+            {/* Trust indicators */}
+            <div className="flex flex-wrap items-center gap-4 text-[11px] text-white/40">
+              <span className="flex items-center gap-1.5">
+                <svg className="w-3.5 h-3.5 text-green-mist" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                </svg>
+                NDIS Registered
+              </span>
+              <span className="flex items-center gap-1.5">
+                <svg className="w-3.5 h-3.5 text-green-mist" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                </svg>
+                Arabic Spoken
+              </span>
+              <span className="flex items-center gap-1.5">
+                <svg className="w-3.5 h-3.5 text-green-mist" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                </svg>
+                Free Consultation
+              </span>
+              <span className="flex items-center gap-1.5">
+                <svg className="w-3.5 h-3.5 text-green-mist" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                </svg>
+                No Agency Markup
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* Right panel — photo */}
+        <div className="relative bg-green-deep min-h-[320px] md:min-h-0 overflow-hidden">
+          <Image
+            src="/leo-photo.jpg"
+            alt="Leo Houssami — NDIS Support Coordinator"
+            fill
+            style={{ objectFit: "cover", objectPosition: "center 20%" }}
+            priority
+            sizes="(max-width: 768px) 100vw, 45vw"
+          />
+          {/* Gradient overlay for text readability if needed */}
+          <div className="absolute inset-0 bg-gradient-to-t from-green-deep/40 via-transparent to-transparent" />
+          {/* Subtle vignette */}
+          <div className="absolute inset-0 shadow-[inset_0_0_80px_rgba(0,0,0,0.15)]" />
+        </div>
       </div>
     </div>
   );
