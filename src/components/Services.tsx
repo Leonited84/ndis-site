@@ -69,9 +69,11 @@ export default function Services() {
           {t.services.label}
         </div>
         <h2 className="font-serif text-2xl md:text-[34px] font-medium text-green-dark leading-[1.2]">
-          {t.services.title}{" "}
-          <em className="not-italic text-amber">{t.services.titleEm}</em>
+          {t.services.title}
         </h2>
+        <p className="text-[15px] text-amber font-medium mt-2">
+          {t.services.titleEm}
+        </p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto stagger-children">
         {services.map((svc, i) => (

@@ -56,7 +56,8 @@ export default function WhySection() {
             {t.why.label}
           </div>
           <h2 className="font-serif text-2xl md:text-[34px] font-medium text-green-dark mb-3 leading-[1.2]">
-            {t.why.title}
+            {t.why.title}{" "}
+            <em className="not-italic text-amber">{t.why.titleEm}</em>
           </h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 stagger-children">
